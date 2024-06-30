@@ -238,8 +238,7 @@ const catsJulia2 = [8, 2, 10, 1, 2, 5, 6, 3, 1, 4];
 // В задании необходимо использовать методы массивов: forEach, slice, concat
 
 function verifyCats(catsJane, catsJulia) {
-  catsJane.shift();
-  catsJane.pop();
+  const delcatsJane = catsJane.slice(1, 9);
   const generalArr = catsJane.concat(catsJulia);
   generalArr.forEach((element, index) => {
     if (element < 2) {
@@ -251,3 +250,52 @@ function verifyCats(catsJane, catsJulia) {
 }
 verifyCats(catsJane, catsJulia);
 verifyCats(catsJane2, catsJulia2);
+
+// Задание 14
+
+// Решить 4 задание из прошлой темы, используя метод filter
+
+// Задание 4
+// Есть массив произвольных чисел:
+const numbers = [42, 65, 49, 68, 56, 47, 70, 42, 51, 35, 58, 63, 40, 70];
+// Вывести в консоль значения всех элементов массива и соответствующие им индексы в таком виде:
+// Индексу 0 соответствует число 42
+// Индексу 1 соответствует число 65
+numbers.filter((element, index) =>
+  console.log(`Индексу ${index} соответствует число ${element}`)
+);
+// Определить массив, например
+const arr = [5, 4, 3, 8, 0];
+// Создать функцию filterFor(arr, a). Функция должна вернуть новый массив из элементов arr, но в нем должны содержаться элементы, которые больше или равны (>=) значения переменной a.
+// Например, запуск функции filterFor(arr, 5) дает результат [5,8]
+// запуск функции filterFor(arr, 10) дает результат []
+// запуск функции filterFor(arr, 3.11) дает результат [4,5,8]
+function filterFor(arr, a) {
+  const newArr = arr.filter((element) => element >= a);
+  return newArr;
+}
+console.log(filterFor(arr, 5));
+
+// Задание 15
+// Описать функцию, которая принимает массив строк и возвращает массив, содержащий только строки более 3-х символов. Проверить работу функции на примере:
+const arrStrings = ["yes", "hello", "no", "easycode", "what"];
+
+function findThreeSymbols(arr) {
+  const newArr = [];
+  arr.forEach((element) => {
+    if (element.length > 3) {
+      newArr.push(element);
+    }
+  });
+  return newArr;
+}
+console.log(findThreeSymbols(arrStrings));
+
+// Задание 16
+// Отсортируйте массив массивов так, чтобы вначале располагались наименьшие массивы (размер массива определяется его длиной):
+const bigArray = [[14, 45], [1], ["a", "c", "d"]];
+// ПОДСКАЗКА. Для правильной сортировки метод sort принимает функцию, параметры которой a и b - это элементы массива. В данной задаче элементы массива, то есть параметры a и b, сами являются массивами и обладают всеми свойствами массивов.
+const sortArray = bigArray.sort((a, b) => {
+  return a.length - b.length;
+});
+console.log(sortArray);
