@@ -299,3 +299,28 @@ const sortArray = bigArray.sort((a, b) => {
   return a.length - b.length;
 });
 console.log(sortArray);
+
+// Задание 17
+// Создайте функцию getAverageHumanAge, которая принимает массив возрастов кошек (catAges) и выполняет следующие действия по порядку:
+// 1. Рассчитывает человеческий возраст по следующей формуле: если возраст кошки <= 2 года, человеческий возраст = возраст кошки * 10. Если кошке больше 2 лет, человеческий возраст = возраст кошки * 7. (сделать через map)
+// 2. Исключает всех кошек младше 18 человеческих лет. (сделать через filter)
+// 3. Возвращает средний человеческий возраст для всех взрослых кошек. (сумму для среднего посчитать через reduce)
+// Вызовите функцию для обоих наборов тестовых данных.
+// Тестовые данные:
+const catAges = [7, 3, 2, 4, 1, 15, 8, 1, 9, 2];
+const catAges2 = [1, 16, 12, 4, 5, 1, 3, 11, 7, 2];
+
+// В задании необходимо использовать методы массивов: map, filter, reduce
+
+function getAverageHumanAge(arr) {
+  const humanAge = arr.map((element) =>
+    element <= 2 ? (element *= 10) : (element *= 7)
+  );
+  const excludeByAge = humanAge.filter((element) => element >= 18);
+  const sumAge = excludeByAge.reduce((acc, element) => acc + element, 0);
+  const averageAge = sumAge / excludeByAge.length;
+  return averageAge;
+}
+
+console.log(getAverageHumanAge(catAges));
+console.log(getAverageHumanAge(catAges2));
